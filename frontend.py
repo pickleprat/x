@@ -67,13 +67,10 @@ The output should always be in JSON dictionary.
 """
 
 predefined_prompt_hashset: str = {
-  "Visual AI Monitoring Prompt": "Under the policy provided, is it acceptable to use visual AI to monitor and stop an exam if it detects unauthorized devices or notes?",
-  "Generative AI Reporting Prompt": "Under the policy provided, is it acceptable to use generative AI to create a report based on those findings that contains personal information and that is sent to the examinee, the examinee’s records, and the examinee’s school?",
-  "AI Monitoring & Reporting Prompt": "Under the policy provided, is it acceptable to (a) use visual AI to monitor and stop an exam if it detects unauthorized devices or notes and (b) use generative AI to create a report based on those findings that contains personal information and that is sent to the examinee, the examinee’s records, and the examinee’s school?",
-  "Reviewed AI Report Prompt": "Under the policy provided, is it acceptable to use generative AI to create a report based on video and proctor reports that contains personal information and that is reviewed by a staff person before it is sent to the examinee, the examinee’s records, and the examinee’s school?",
-  "AI-Assisted Proctoring Prompt": "Under the policy provided, is it acceptable to (a) use visual AI to monitor and notify a proctor if it detects unauthorized devices or notes and (b) use generative AI to create a report based on video and proctor reports that contains personal information and that is reviewed by a staff person before it is sent to the examinee, the examinee’s records, and the examinee’s school?"
-}
-  
+  "AI Risks Identification Prompt": "What risks are associated with using a generative AI tool to autonomously (a) review accommodations applications; (b) approve or deny requests; and (c) send out notice of decisions to candidates (and if the request is granted, to also send the information to delivery vendors)?",
+  "AI Risk Mitigation Prompt": "What are the best ways to mitigate those risks?"
+}  
+
 client = openai.OpenAI(api_key=OPENAI_API_KEY)
 
 def extract_markdown_per_page(pdf_path):
@@ -179,6 +176,7 @@ def rag_page():
             st.write(f"Processed output for: {normal_prompt}")
             with st.spinner("Normal text output..."): 
                 if "markdown_pages" in st.session_state: 
+
                     normal_prompt = (normal_prompt + "### TEXT CONTENT ###\n" +  
                         ".".join(st.session_state.markdown_pages) ) 
 
