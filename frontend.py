@@ -277,8 +277,15 @@ def main():
 
         st.markdown(
             "<h2 style='text-align: center; font-size: 25px; "
-            "margin-top: -20px; margin-bottom: 30px;'>"
+            "margin-top: -20px; margin-bottom: 28px'>"
             "While navigating the roadmap of Generative AI adoption</h2>",
+            unsafe_allow_html=True
+        )
+
+        st.markdown(
+            "<h3 style='text-align: center; font-size: 22px; "
+            "margin-top: -20px; margin-bottom: 15px;'>"
+            "Session 2</h3>",
             unsafe_allow_html=True
         )
 
